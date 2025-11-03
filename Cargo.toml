@@ -1,0 +1,57 @@
+[package]
+name = "kodegen_bundler_autoconfig"
+version = "0.1.0"
+edition = "2024"
+description = "KODEGEN.ᴀɪ: Memory-efficient, Blazing-Fast, MCP tools for code generation agents."
+authors = ["KODEGEN.ᴀɪ"]
+homepage = "https://kodegen.ai"
+repository = "https://github.com/cyrup-ai/kodegen-bundler-autoconfig"
+readme = "README.md"
+categories = ["development-tools", "command-line-utilities", "api-bindings"]
+keywords = [
+    "mcp",
+    "terminal",
+    "agent",
+    "filesystem",
+    "claude"
+]
+license = "Apache-2.0 OR MIT"
+
+[dependencies]
+watchexec = "8"
+watchexec-filterer-globset = "8"
+watchexec-events = "6"
+watchexec-signals = "5"
+miette = "7"
+
+# Config file handling
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.9"
+serde_yaml = "0.9"
+
+# Core utilities
+anyhow = "1"
+thiserror = "2"
+log = "0.4"
+tokio = { version = "1", features = ["full"] }
+directories = "6"
+crossbeam-channel = "0.5"
+parking_lot = "0.12"
+dashmap = "6"
+
+
+# Platform-specific features
+[target.'cfg(windows)'.dependencies]
+winreg = "0.55"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+plist = "1"
+
+[lib]
+name = "kodegen_bundler_autoconfig"
+path = "src/lib.rs"
+
+
+[features]
+dirs = []
