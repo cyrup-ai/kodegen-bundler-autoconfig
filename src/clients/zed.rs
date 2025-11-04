@@ -100,7 +100,8 @@ impl ClientConfigPlugin for ZedPlugin {
             return Ok(config_content.to_string());
         }
 
-        // Inject Zed format: uses context_servers not mcpServers
+        // Inject Zed format: uses context_servers with source, command, args, env
+        // According to official Zed docs at https://zed.dev/docs/ai/mcp
         if let Some(obj) = config.as_object_mut() {
             if !obj.contains_key("context_servers") {
                 obj.insert("context_servers".to_string(), serde_json::json!({}));
@@ -113,11 +114,10 @@ impl ClientConfigPlugin for ZedPlugin {
                 servers.insert(
                     "kodegen".to_string(),
                     serde_json::json!({
-                        "command": {
-                            "path": "kodegen",
-                            "args": []
-                        },
-                        "settings": {}
+                        "source": "custom",
+                        "command": "kodegen",
+                        "args": ["--stdio"],
+                        "env": {}
                     }),
                 );
             }

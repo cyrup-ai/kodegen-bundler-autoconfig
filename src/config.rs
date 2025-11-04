@@ -1,4 +1,4 @@
-use anyhow::{Context, Result, anyhow};
+use anyhow::{Result, anyhow};
 use serde_json::Value as JsonValue;
 use serde_yaml::Value as YamlValue;
 use toml::Value as TomlValue;
@@ -33,7 +33,7 @@ impl ConfigMerger {
                 "mcpServers": {
                     "kodegen": {
                         "command": "kodegen",
-                        "args": ["--proxy-http", "http://localhost:8081/mcp"],
+                        "args": ["--stdio"],
                         "env": {}
                     }
                 }
@@ -49,8 +49,7 @@ impl ConfigMerger {
                 kodegen.insert(
                     "args".to_string(),
                     TomlValue::Array(vec![
-                        TomlValue::String("--proxy-http".to_string()),
-                        TomlValue::String("http://localhost:8081/mcp".to_string()),
+                        TomlValue::String("--stdio".to_string()),
                     ]),
                 );
                 mcp_servers.insert("kodegen".to_string(), TomlValue::Table(kodegen));
@@ -63,8 +62,7 @@ mcpServers:
   kodegen:
     command: kodegen
     args:
-      - --proxy-http
-      - http://localhost:8081/mcp
+      - --stdio
     env: {}
 ";
                 serde_yaml::from_str(yaml_str)
@@ -80,8 +78,7 @@ mcpServers:
                 kodegen.insert(
                     "args".to_string(),
                     Value::Array(vec![
-                        Value::String("--proxy-http".to_string()),
-                        Value::String("http://localhost:8081/mcp".to_string()),
+                        Value::String("--stdio".to_string()),
                     ]),
                 );
                 kodegen.insert(
