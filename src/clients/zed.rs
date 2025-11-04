@@ -116,8 +116,7 @@ impl ClientConfigPlugin for ZedPlugin {
                     serde_json::json!({
                         "source": "custom",
                         "command": "kodegen",
-                        "args": ["--stdio"],
-                        "env": {}
+                        "args": ["--stdio"]
                     }),
                 );
             }

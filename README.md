@@ -31,8 +31,7 @@ Each client uses a slightly different configuration format, but we handle all th
   "mcpServers": {
     "kodegen": {
       "command": "kodegen",
-      "args": ["--stdio"],
-      "env": {}
+      "args": ["--stdio"]
     }
   }
 }

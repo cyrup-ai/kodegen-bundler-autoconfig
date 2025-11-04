@@ -33,8 +33,7 @@ impl ConfigMerger {
                 "mcpServers": {
                     "kodegen": {
                         "command": "kodegen",
-                        "args": ["--stdio"],
-                        "env": {}
+                        "args": ["--stdio"]
                     }
                 }
             }),
@@ -63,7 +62,6 @@ mcpServers:
     command: kodegen
     args:
       - --stdio
-    env: {}
 ";
                 serde_yaml::from_str(yaml_str)
                     .ok()
@@ -80,10 +78,6 @@ mcpServers:
                     Value::Array(vec![
                         Value::String("--stdio".to_string()),
                     ]),
-                );
-                kodegen.insert(
-                    "env".to_string(),
-                    Value::Dictionary(plist::Dictionary::new()),
                 );
 
                 let mut servers = plist::Dictionary::new();
