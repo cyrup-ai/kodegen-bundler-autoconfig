@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/img/banner.png" alt="Kodegen AI Banner" width="100%" />
+</div>
+
 # KODEGEN.ᴀɪ Client Auto-Configuration
 
 Automatic configuration system for MCP clients (Claude Desktop, Windsurf, Cursor, etc.) to seamlessly integrate with KODEGEN.ᴀɪ.
