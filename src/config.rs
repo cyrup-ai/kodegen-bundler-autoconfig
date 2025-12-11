@@ -1,4 +1,6 @@
-use anyhow::{Context, Result, anyhow};
+use anyhow::{Result, anyhow};
+#[cfg(target_os = "macos")]
+use anyhow::Context;
 use serde_json::Value as JsonValue;
 use serde_yaml::Value as YamlValue;
 use toml::Value as TomlValue;
